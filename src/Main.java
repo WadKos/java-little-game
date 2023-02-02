@@ -14,7 +14,15 @@ public class Main {
         int oldPositionX = Player.positionX;
         int oldPositionY = Player.positionY;
         field[Player.positionY][Player.positionX] = PLAYER_ID;
-        Enemy enemy1 = new Enemy(sizeOfField - 1, sizeOfField - 1);
+        //Enemy enemy1 = new Enemy(sizeOfField - 1, sizeOfField - 1);
+        Enemy enemy1 = new Enemy(1, 1);
+        Enemy enemy2 = new Enemy(1, 2);
+        Enemy enemy3 = new Enemy(1, 3);
+        Enemy enemy4 = new Enemy(2, 1);
+        Enemy enemy5 = new Enemy(2, 3);
+        Enemy enemy6 = new Enemy(3, 1);
+        Enemy enemy7 = new Enemy(3, 2);
+        Enemy enemy8 = new Enemy(3, 3);
 
         while (true) {
             drawField(field);

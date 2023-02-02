@@ -1,6 +1,6 @@
 public class Enemy {
-    static int positionX = 0;
-    static int positionY = 0;
+    int positionX = 0;
+    int positionY = 0;
 
     public Enemy (int positionX, int positionY) {
         this.positionX = positionX;

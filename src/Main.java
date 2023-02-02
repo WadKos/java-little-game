@@ -1,31 +1,40 @@
 import java.util.Scanner;
 
 public class Main {
-    static public int sizeOfField = 5;
+
+
+    static final int EMPTY_ID = 0;
+    static final int PLAYER_ID = 1;
+    static final int ENEMY_ID = 2;
+    public static int sizeOfField = 5;
+    public static int[][] field = new int[sizeOfField][sizeOfField];
 
     public static void main(String[] args) {
-        boolean[][] field = new boolean[sizeOfField][sizeOfField];
         Scanner scanner = new Scanner(System.in);
         int oldPositionX = Player.positionX;
         int oldPositionY = Player.positionY;
-        field[Player.positionY][Player.positionX] = true;
+        field[Player.positionY][Player.positionX] = PLAYER_ID;
+        Enemy enemy1 = new Enemy(sizeOfField - 1, sizeOfField - 1);
 
         while (true) {
             drawField(field);
             String move = scanner.next();
+            if (move.equals("stop")) {
+                break;
+            }
             Player.changePosition(move);
-            field[oldPositionY][oldPositionX] = false;
+            field[oldPositionY][oldPositionX] = EMPTY_ID;
             oldPositionX = Player.positionX;
             oldPositionY = Player.positionY;
-            field[Player.positionY][Player.positionX] = true;
+            field[Player.positionY][Player.positionX] = PLAYER_ID;
         }
     }
 
-    static void drawField(boolean[][] field) {
+    static void drawField(int[][] field) {
         System.out.println("-".repeat(3*sizeOfField));
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[i].length; j++) {
-                System.out.printf("|%d|", field[i][j] ? 1 : 0);
+                System.out.printf("|%d|", field[i][j]);
             }
             System.out.println();
         }
@@ -34,25 +43,44 @@ public class Main {
 }
 
 class Player {
-    static int positionX = 0;
-    static int positionY = 0;
+    static int positionX = 2;
+    static int positionY = 2;
 
     public static void changePosition(String move) {
         switch (move) {
             case "left":
-                positionX--;
+                if (checkMove(checkPosition(positionY),  checkPosition(positionX-1))) {
+                    positionX--;
+                } else {
+                    System.out.println("You should kill enemy first");
+                }
                 break;
             case "right":
-                positionX++;
+                if (checkMove(checkPosition(positionY), checkPosition(positionX + 1))) {
+                    positionX++;
+                } else {
+                    System.out.println("You should kill enemy first");
+                }
                 break;
             case "up":
-                positionY--;
+                if (checkMove(checkPosition(positionY - 1), checkPosition(positionX))) {
+                    positionY--;
+                } else {
+                    System.out.println("You should kill enemy first");
+                }
                 break;
             case "down":
-                positionY++;
+                if (checkMove(checkPosition(positionY + 1), checkPosition(positionX))) {
+                    positionY++;
+                } else {
+                    System.out.println("You should kill enemy first");
+                }
+                break;
+            case "attack":
+                attackEnemy();
                 break;
             default:
-                System.out.println("Вы ввели что-то не то, попробуйте еще раз");
+                System.out.println("WTF are you write???");
         }
         positionY = checkPosition(positionY);
         positionX = checkPosition(positionX);
@@ -65,5 +93,24 @@ class Player {
             return 0;
         }
         return position;
+    }
+
+    static boolean checkMove(int positionY, int positionX) {
+        return Main.field[positionY][positionX] != Main.ENEMY_ID;
+    }
+
+    static void attackEnemy() {
+        for (int i = positionY > 0 ? positionY - 1 : positionY;
+             i <= (positionY < Main.sizeOfField - 1 ? positionY + 1 : positionY);
+             i++) {
+            for (int j = positionX > 0 ? positionX - 1 : positionX;
+                 j <= (positionX < Main.sizeOfField - 1 ? positionX + 1 : positionX);
+                 j++) {
+                if (Main.field[i][j] == Main.ENEMY_ID) {
+                    Main.field[i][j] = Main.EMPTY_ID;
+                    return;
+                }
+            }
+        }
     }
 }

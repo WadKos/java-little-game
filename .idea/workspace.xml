@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18d1a268-d0e9-4e70-8272-3cff70101ed1" name="Changes" comment="Fix static fields in Enemy class">
+      <change afterPath="$PROJECT_DIR$/src/Npc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LittleGame/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LittleGame/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LittleGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LittleGame/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +44,25 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="LittleGame" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -67,6 +83,8 @@
       <updated>1675187452033</updated>
       <workItem from="1675187453288" duration="1949000" />
       <workItem from="1675361259603" duration="7696000" />
+      <workItem from="1675371227101" duration="311000" />
+      <workItem from="1675444443370" duration="3112000" />
     </task>
     <task id="LOCAL-00001" summary="Add Movement">
       <created>1675187506368</created>

@@ -24,17 +24,29 @@ public class Main {
                 "Npc: %d \n" +
                 "You can go 'left', 'right', 'up' and 'down' \n" +
                 "Also you can 'talk' and 'attack' \n" +
-                "If you wanna stop the game just print 'stop'", PLAYER_ID, ENEMY_ID, MOUNTAIN_ID, NPC_ID);
+                "If you wanna stop the game just print 'stop' \n", PLAYER_ID, ENEMY_ID, MOUNTAIN_ID, NPC_ID);
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
+
         int oldPositionX = Player.positionX;
         int oldPositionY = Player.positionY;
+
         field[Player.positionY][Player.positionX] = PLAYER_ID;
+
         Enemy enemy1 = new Enemy(sizeOfField - 1, sizeOfField - 1);
+
         Npc npc1 = new Npc(0, 0, "Please, kill enemy in the opposite corner!!!");
         npcList.add(npc1);
         Npc npc2 = new Npc(sizeOfField - 1, 0, "Hi, my name is Tolya Markin");
         npcList.add(npc2);
+
+        for (int i = 0; i < sizeOfField; i++) {
+            int mountainPosX = random.nextInt(5);
+            int mountainPosY = random.nextInt(5);
+            if (isCreateMountain(mountainPosX, mountainPosY)) {
+                field[mountainPosY][mountainPosX] = MOUNTAIN_ID;
+            }
+        }
 
         //Enemy enemy1 = new Enemy(1, 1);
         //Enemy enemy2 = new Enemy(1, 2);
@@ -82,6 +94,10 @@ public class Main {
         }
         return null;
     }
+
+    static boolean isCreateMountain(int positionX, int positionY) {
+        return field[positionY][positionX] == EMPTY_ID;
+    }
  }
 
 class Player {
@@ -93,31 +109,47 @@ class Player {
     public static void changePosition(String move) {
         switch (move) {
             case "left":
-                if (checkMove(checkPosition(positionY),  checkPosition(positionX-1))) {
+                if (checkMove(checkPosition(positionY),  checkPosition(positionX-1)) == Main.EMPTY_ID) {
                     positionX--;
-                } else {
+                } else if (checkMove(checkPosition(positionY),  checkPosition(positionX-1)) == Main.ENEMY_ID) {
                     Player.getDamage(25);
+                } else if (checkMove(checkPosition(positionY),  checkPosition(positionX-1)) == Main.MOUNTAIN_ID) {
+                    System.out.println("You can't go out there, there is a mountain");
+                } else if (checkMove(checkPosition(positionY),  checkPosition(positionX-1)) == Main.NPC_ID) {
+                    System.out.println("Don't Tread on Me");
                 }
                 break;
             case "right":
-                if (checkMove(checkPosition(positionY), checkPosition(positionX + 1))) {
+                if (checkMove(checkPosition(positionY),  checkPosition(positionX+1)) == Main.EMPTY_ID) {
                     positionX++;
-                } else {
+                } else if (checkMove(checkPosition(positionY),  checkPosition(positionX+1)) == Main.ENEMY_ID) {
                     Player.getDamage(25);
+                } else if (checkMove(checkPosition(positionY),  checkPosition(positionX+1)) == Main.MOUNTAIN_ID) {
+                    System.out.println("You can't go out there, there is a mountain");
+                } else if (checkMove(checkPosition(positionY),  checkPosition(positionX+1)) == Main.NPC_ID) {
+                    System.out.println("Don't Tread on Me");
                 }
                 break;
             case "up":
-                if (checkMove(checkPosition(positionY - 1), checkPosition(positionX))) {
+                if (checkMove(checkPosition(positionY-1),  checkPosition(positionX)) == Main.EMPTY_ID) {
                     positionY--;
-                } else {
+                } else if (checkMove(checkPosition(positionY-1),  checkPosition(positionX)) == Main.ENEMY_ID) {
                     Player.getDamage(25);
+                } else if (checkMove(checkPosition(positionY-1),  checkPosition(positionX)) == Main.MOUNTAIN_ID) {
+                    System.out.println("You can't go out there, there is a mountain");
+                } else if (checkMove(checkPosition(positionY-1),  checkPosition(positionX)) == Main.NPC_ID) {
+                    System.out.println("Don't Tread on Me");
                 }
                 break;
             case "down":
-                if (checkMove(checkPosition(positionY + 1), checkPosition(positionX))) {
+                if (checkMove(checkPosition(positionY+1),  checkPosition(positionX)) == Main.EMPTY_ID) {
                     positionY++;
-                } else {
+                } else if (checkMove(checkPosition(positionY+1),  checkPosition(positionX)) == Main.ENEMY_ID) {
                     Player.getDamage(25);
+                } else if (checkMove(checkPosition(positionY+1),  checkPosition(positionX)) == Main.MOUNTAIN_ID) {
+                    System.out.println("You can't go out there, there is a mountain");
+                } else if (checkMove(checkPosition(positionY+1),  checkPosition(positionX)) == Main.NPC_ID) {
+                    System.out.println("Don't Tread on Me");
                 }
                 break;
             case "attack":
@@ -142,8 +174,8 @@ class Player {
         return position;
     }
 
-    static boolean checkMove(int positionY, int positionX) {
-        return Main.field[positionY][positionX] != Main.ENEMY_ID;
+    static int checkMove(int positionY, int positionX) {
+        return Main.field[positionY][positionX];
     }
 
     static void attackEnemy() {

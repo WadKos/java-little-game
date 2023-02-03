@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18d1a268-d0e9-4e70-8272-3cff70101ed1" name="Changes" comment="Fix static fields in Enemy class">
-      <change afterPath="$PROJECT_DIR$/src/Npc.java" afterDir="false" />
+    <list default="true" id="18d1a268-d0e9-4e70-8272-3cff70101ed1" name="Changes" comment="Add Npc, talk and lil tutorial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LittleGame/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LittleGame/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LittleGame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LittleGame/Player.class" afterDir="false" />
@@ -84,7 +83,7 @@
       <workItem from="1675187453288" duration="1949000" />
       <workItem from="1675361259603" duration="7696000" />
       <workItem from="1675371227101" duration="311000" />
-      <workItem from="1675444443370" duration="3112000" />
+      <workItem from="1675444443370" duration="4712000" />
     </task>
     <task id="LOCAL-00001" summary="Add Movement">
       <created>1675187506368</created>
@@ -107,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675370617690</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add Npc, talk and lil tutorial">
+      <created>1675447637721</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675447637721</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +134,7 @@
     <MESSAGE value="Add Movement" />
     <MESSAGE value="Add enemy and enemy behaviour" />
     <MESSAGE value="Fix static fields in Enemy class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix static fields in Enemy class" />
+    <MESSAGE value="Add Npc, talk and lil tutorial" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Npc, talk and lil tutorial" />
   </component>
 </project>
